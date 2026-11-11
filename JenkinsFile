@@ -1,6 +1,10 @@
 pipeline {
     
-    agent { docker { image 'postman/newman:latest' } }
+    agent { 
+        docker {
+                image 'postman/newman:latest'
+                args '-u root --entrypoint=' } 
+        }
     
         stages {
             stage( 'Tests API' ) {
