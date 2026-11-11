@@ -5,7 +5,7 @@ pipeline {
         stages {
             stage( 'Tests API' ) {
                 steps { 
-                    sh "newman run Collections/\Postman_CICD.postman_collection.json -e env/\API_EFI.postman_environment.json"
+                    sh "newman run Collections/Postman_CICD.postman_collection.json -e env/API_EFI.postman_environment.json"
                 }
             }
         }
