@@ -1,0 +1,59 @@
+{
+  "info": {
+    "_postman_id": "fb34b83e-70a2-454a-8454-e759cec717f8",
+    "name": "Postman_CICD",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "59053123",
+    "_collection_link": "https://go.postman.co/collection/59053123-fb34b83e-70a2-454a-8454-e759cec717f8?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "get all employee private Copy",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{URL}}user-api/public/products",
+          "host": [
+            "{{URL}}user-api"
+          ],
+          "path": [
+            "public",
+            "products"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
