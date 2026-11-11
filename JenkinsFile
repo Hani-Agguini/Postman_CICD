@@ -1,19 +1,12 @@
-    pipeline {
-        agent { docker { image 'postman/newman:latest' } }
+pipeline {
     
+    agent { docker { image 'postman/newman:latest' } }
     
         stages {
             stage( 'Tests API' ) {
                 steps { 
-                    sh '''newman run Postman_CICD.postman_collection.json \\
-                    -e API_EFI.postman_environment.json  \\'''
+                    sh "newman run .\Collections\Postman_CICD.postman_collection.json -e .\env\API_EFI.postman_environment.json"
                 }
-            }
-        }
-        post {
-            always {
-                junit 'resultats/newman.xml'
-                archiveArtifacts artifacts: 'resultats/rapport.html'
             }
         }
 }
