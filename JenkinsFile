@@ -2,14 +2,18 @@ pipeline {
     
     agent { 
         docker {
-                image 'postman/newman:latest'
+                image 'node:22'
                 args '-u root --entrypoint=' } 
         }
+
     
         stages {
             stage( 'Tests API' ) {
                 steps { 
-                    sh "newman run Collections/Postman_CICD.postman_collection.json -e env/API_EFI.postman_environment.json"
+                    sh 'npm install -g newman newman-reporter-htmlextra'
+                    sh "newman run Collections/Postman_CICD.postman_collection.json -e env/API_EFI.postman_environment.json -r cli,junit,htmlextra \\
+                        --reporter-junit- export resultats/newman.xml \\
+                        --reporter-htmlextra- export resultats/rapport.html"
                 }
             }
         }
