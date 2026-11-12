@@ -31,17 +31,7 @@ pipeline {
     post {
         success {
             // 1. Archive le rapport (téléchargeable depuis la page du build)
-            archiveArtifacts artifacts: 'reports/*.html', fingerprint: true, allowEmptyArchive: true
-
-            // 2. Affiche le rapport HTML dans Jenkins (lien dans le menu du build)
-            publishHTML(target: [
-                allowMissing: false,
-                alwaysLinkToLastBuild: true,
-                keepAll: true,
-                reportDir: 'reports',
-                reportFiles: 'rapport.html',
-                reportName: 'Rapport Newman'
-            ])
+            archiveArtifacts artifacts: 'reports/*.html', allowEmptyArchive: true
         }
     }
 }
